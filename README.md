@@ -64,3 +64,9 @@ bankManagementSystem1
 - Implemented constructor and getter methods
 - Added deposit and withdrawal business logic
 - Followed OOP best practices
+
+## Day-3 Progress
+- Implemented BankService class
+- Used ArrayList to manage multiple accounts
+- Added deposit, withdraw, and balance features
+- Improved separation of business logic
