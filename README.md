@@ -70,3 +70,9 @@ bankManagementSystem1
 - Used ArrayList to manage multiple accounts
 - Added deposit, withdraw, and balance features
 - Improved separation of business logic
+
+## Day-4 Progress
+- Added custom exception handling
+- Implemented input validation
+- Prevented invalid deposits and withdrawals
+- Improved application stability
