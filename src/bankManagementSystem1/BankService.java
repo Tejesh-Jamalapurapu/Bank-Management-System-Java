@@ -4,56 +4,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankService {
-	private List<Account> accounts = new ArrayList<>();
 
-	public void addAccount(Account account) {
-		accounts.add(account);
-		System.out.println("Account created successfully!");
-	}
+    private List<Account> accounts;
 
-	private Account findAccount(int accNo) {
-		for (Account acc : accounts) {
-			if (acc.getAccountNumber() == accNo) {
-				return acc;
-			}
-		}
-		return null;
-	}
+    public BankService() {
+        accounts = FileUtil.loadAccounts();
+    }
 
-	public void deposit(int accNo, double amount) {
-		Account acc = findAccount(accNo);
-		if (acc == null) {
-			System.out.println("Account not found!");
-			return;
-		}
+    public void addAccount(Account account) {
+        accounts.add(account);
+        FileUtil.saveAccounts(accounts);
+        System.out.println("Account created successfully!");
+    }
 
-		try {
-			acc.deposit(amount);
-		} catch (InvalidAmountException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+    private Account findAccount(int accNo) {
+        for (Account acc : accounts) {
+            if (acc.getAccountNumber() == accNo) {
+                return acc;
+            }
+        }
+        return null;
+    }
 
-	public void withdraw(int accNo, double amount) {
-		Account acc = findAccount(accNo);
-		if (acc == null) {
-			System.out.println("Account not found!");
-			return;
-		}
+    public void deposit(int accNo, double amount) {
+        Account acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
+        acc.deposit(amount);
+        FileUtil.saveAccounts(accounts);
+        System.out.println("Deposit successful");
+    }
 
-		try {
-			acc.withdraw(amount);
-		} catch (InvalidAmountException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+    public void withdraw(int accNo, double amount) {
+        Account acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
+        acc.withdraw(amount);
+        FileUtil.saveAccounts(accounts);
+        System.out.println("Withdrawal successful");
+    }
 
-	public void checkBalance(int accNo) {
-		Account acc = findAccount(accNo);
-		if (acc != null) {
-			System.out.println("Balance: " + acc.getBalance());
-		} else {
-			System.out.println("Account not found!");
-		}
-	}
+    public void checkBalance(int accNo) {
+        Account acc = findAccount(accNo);
+        if (acc != null) {
+            System.out.println("Balance: " + acc.getBalance());
+        } else {
+            System.out.println("Account not found");
+        }
+    }
 }
