@@ -76,3 +76,9 @@ bankManagementSystem1
 - Implemented input validation
 - Prevented invalid deposits and withdrawals
 - Improved application stability
+
+## Day-5 Progress
+- Implemented file handling using serialization
+- Saved and loaded account data from file
+- Achieved data persistence across application restarts
+
