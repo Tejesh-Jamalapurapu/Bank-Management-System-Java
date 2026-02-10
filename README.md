@@ -82,3 +82,10 @@ bankManagementSystem1
 - Saved and loaded account data from file
 - Achieved data persistence across application restarts
 
+## Day-6 Progress
+- Implemented transaction history
+- Recorded deposits and withdrawals
+- Persisted transaction data using file handling
+- Enabled transaction statement viewing
+
+
