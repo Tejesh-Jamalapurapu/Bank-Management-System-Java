@@ -16,7 +16,8 @@ public class Main {
 	                System.out.println("2. Deposit");
 	                System.out.println("3. Withdraw");
 	                System.out.println("4. Check Balance");
-	                System.out.println("5. Exit");
+	                System.out.println("5. Transaction History");
+	                System.out.println("6. Exit");
 	                System.out.print("Enter choice: ");
 
 	                int choice = sc.nextInt();
@@ -47,8 +48,12 @@ public class Main {
 	                        System.out.print("Account Number: ");
 	                        bankService.checkBalance(sc.nextInt());
 	                        break;
-
 	                    case 5:
+	                    	System.out.println("Enter Account Number: ");
+	                    	bankService.showTransactions(sc.nextInt());
+	                    	break;
+
+	                    case 6:
 	                        System.out.println("Exiting...");
 	                        sc.close();
 	                        return;

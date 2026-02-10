@@ -1,6 +1,5 @@
 package bankManagementSystem1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BankService {
@@ -11,12 +10,6 @@ public class BankService {
         accounts = FileUtil.loadAccounts();
     }
 
-    public void addAccount(Account account) {
-        accounts.add(account);
-        FileUtil.saveAccounts(accounts);
-        System.out.println("Account created successfully!");
-    }
-
     private Account findAccount(int accNo) {
         for (Account acc : accounts) {
             if (acc.getAccountNumber() == accNo) {
@@ -24,6 +17,12 @@ public class BankService {
             }
         }
         return null;
+    }
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+        FileUtil.saveAccounts(accounts);
+        System.out.println("Account created successfully!");
     }
 
     public void deposit(int accNo, double amount) {
@@ -55,5 +54,16 @@ public class BankService {
         } else {
             System.out.println("Account not found");
         }
+    }
+
+    public void showTransactions(int accNo) {
+        Account acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
+
+        System.out.println("\n--- Transaction History ---");
+        acc.getTransactions().forEach(System.out::println);
     }
 }
